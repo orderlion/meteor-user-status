@@ -16,7 +16,7 @@ Package.onUse((api) => {
   api.use('mongo');
   api.use('ddp');
   api.use('tracker', 'client');
-  api.use('mizzao:timesync@0.6.0');
+  api.use('mizzao:timesync@0.5.5');
 
   api.export('MonitorInternals', 'client', {
     testOnly: true
@@ -33,7 +33,7 @@ Package.onUse((api) => {
 Package.onTest((api) => {
   api.use('ecmascript');
   api.use('mizzao:user-status');
-  api.use('mizzao:timesync@0.6.0');
+  api.use('mizzao:timesync@0.5.5');
 
   api.use(['accounts-base', 'accounts-password']);
 
