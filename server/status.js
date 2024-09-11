@@ -62,7 +62,7 @@ statusEvents.on('connectionLogout', async (advice) => {
   if (conns.length === 0) {
     // Go offline if we are the last connection for this user
     // This includes removing all idle information
-    Meteor.users.update(advice.userId, {
+    await Meteor.users.updateAsync(advice.userId, {
       $set: {
         'status.online': false
       },
