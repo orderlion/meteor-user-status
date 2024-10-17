@@ -258,7 +258,7 @@ Meteor.onConnection(async (connection) => {
 });
 
 // Authentication of a DDP connection
-Accounts.onLogin(async (info) => await loginSession(info.connection, new Date(), info.user._id));
+Accounts.onLogin(async (info) => await loginSession(info.connection, new Date(), info.user?._id));
 
 // pub/sub trick as referenced in http://stackoverflow.com/q/10257958/586086
 // We used this in the past, but still need this to detect logouts on the same connection.
