@@ -11,7 +11,7 @@ if (Meteor.isServer) {
   });
 
   if (!testUserExists) {
-    TEST_userId = Meteor.users.insert({
+    TEST_userId = Meteor.users.insertAsync({
       username: TEST_username
     });
     console.log('Inserted test user id: ', TEST_userId);

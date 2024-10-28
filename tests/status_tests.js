@@ -38,7 +38,7 @@ const withCleanup = getCleanupWrapper({
     lastIdleAdvice = null;
     lastActiveAdvice = null;
 
-    Meteor.users.update(TEST_userId, {
+    Meteor.users.updateAsync(TEST_userId, {
       $unset: {
         status: null
       }
