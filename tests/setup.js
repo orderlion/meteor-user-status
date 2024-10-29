@@ -6,7 +6,7 @@ export let TEST_userId = '';
 export const TEST_IP = '255.255.255.0';
 
 if (Meteor.isServer) {
-  const testUserExists = Meteor.users.findOne({
+  const testUserExists = Meteor.users.findOneAsync({
     username: TEST_username
   });
 
