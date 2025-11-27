@@ -3,7 +3,11 @@
 Package.describe({
   name: 'mizzao:user-status',
   summary: 'User connection and idle state tracking for Meteor',
+<<<<<<< Updated upstream
   version: '1.2.0',
+=======
+  version: '1.4.0',
+>>>>>>> Stashed changes
   git: 'https://github.com/Meteor-Community-Packages/meteor-user-status.git'
 });
 

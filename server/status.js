@@ -31,6 +31,7 @@ statusEvents.on('connectionLogin', (advice) => {
   const update = {
     $set: {
       'status.online': true,
+      'status.dockerContainerName': process?.env?.OL_CONTAINER_NAME || undefined,
       'status.lastLogin': {
         date: advice.loginTime,
         ipAddr: advice.ipAddr,
@@ -43,16 +44,25 @@ statusEvents.on('connectionLogin', (advice) => {
   // the user connection becomes active.
   const conns = UserConnections.find({
     userId: advice.userId
+<<<<<<< Updated upstream
   }).fetch();
+=======
+  }).fetchAsync();
+
+>>>>>>> Stashed changes
   if (!conns.every(c => c.idle)) {
     update.$set['status.idle'] = false;
     update.$unset = {
       'status.lastActivity': null
     };
   }
-  // in other case, idle field remains true and no update to lastActivity.
 
+<<<<<<< Updated upstream
   Meteor.users.update(advice.userId, update);
+=======
+  // in other case, idle field remains true and no update to lastActivity.
+  await Meteor.users.updateAsync(advice.userId, update);
+>>>>>>> Stashed changes
 });
 
 statusEvents.on('connectionLogout', (advice) => {
@@ -68,7 +78,8 @@ statusEvents.on('connectionLogout', (advice) => {
       },
       $unset: {
         'status.idle': null,
-        'status.lastActivity': null
+        'status.lastActivity': null,
+        'status.dockerContainerName': null
       }
     });
   } else if (conns.every(c => c.idle)) {
@@ -143,7 +154,8 @@ const onStartup = (selector) => {
     },
     $unset: {
       'status.idle': null,
-      'status.lastActivity': null
+      'status.lastActivity': null,
+      'status.dockerContainerName': null
     }
   }, {
     multi: true
